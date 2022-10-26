@@ -45,3 +45,6 @@ include:
     # https://firebase.google.com/docs/cli?authuser=0#cli-ci-systems
     # Authentication is made through the FIREBASE_TOKEN environment variable
     - firebase deploy
+  environment:
+    name: production
+    url: https://heart.fabernovel.com
