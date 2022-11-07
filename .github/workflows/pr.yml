@@ -42,5 +42,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: test
+      - name: Run lint
         run: pnpm run lint
