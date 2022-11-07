@@ -52,9 +52,8 @@ jobs:
 #          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
 #          channelId: live
 
-      - name: Install Firebase CLI
+       - name: Install Firebase CLI
         run: pnpm install -g firebase-tools
 
       - name: Deploy with Firebase
         run: firebase deploy
-
