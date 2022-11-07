@@ -1,13 +1,50 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
-stages:
-- test
-sast:
-  stage: test
+default:
+  # https://hub.docker.com/_/node
+  # The version must match the ones in .nvmrc and package.json:engines.node
+  image: node:18-alpine
+
 include:
-- template: Security/SAST.gitlab-ci.yml
+  - local: "ci/utils/base-job.yml"
+  - local: "ci/utils/condition.yml"
+  - local: "ci/analyze.yml"
+
+🏗 Build:
+  extends:
+    - .install
+    - .build
+  rules:
+    # Either .on-mr, either .on-default
+    - !reference [.on-mr, rules]
+    - !reference [.on-default, rules]
+  interruptible: true
+
+# Checks code linting
+💅 Lint:
+  stage: test
+  extends:
+    - .install
+    - .on-mr
+  dependencies:
+    - 🏗 Build
+  script:
+    - npm run lint
+  interruptible: true
+  
+# This operation use artifacts created and stored during the "Build" job.
+# This speeds up this job by avoiding to execute additional operations on the repository (like Rush commands).
+🚀 Publish the website to production:
+  stage: deploy
+  extends:
+    - .on-default
+  dependencies:
+    - 🏗 Build
+  before_script:
+    # Grab Firebase CLI
+    - pnpm install -g firebase-tools
+  script:
+    # https://firebase.google.com/docs/cli?authuser=0#cli-ci-systems
+    # Authentication is made through the FIREBASE_TOKEN environment variable
+    - firebase deploy
+  environment:
+    name: production
+    url: https://heart.fabernovel.com

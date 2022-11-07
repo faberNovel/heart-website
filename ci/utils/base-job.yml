@@ -1,0 +1,36 @@
+.build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+
+.test:
+  stage: test
+  extends:
+    - .install
+    - .install-chrome
+  before_script:
+    - !reference [.install-chrome, before_script]
+    - !reference [.install, before_script]
+
+.install:
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - node_modules/.pnpm
+  before_script:
+    # https://pnpm.io/installation#on-alpine-linux
+    - curl -fsSL "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" -o /bin/pnpm; chmod +x /bin/pnpm;
+
+# required to use Puppeteer
+.install-chrome:
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    - apt-get update
+    - apt-get install --yes google-chrome-stable

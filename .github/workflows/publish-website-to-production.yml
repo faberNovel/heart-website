@@ -1,0 +1,61 @@
+name: 🚀 Publish the website to production
+
+on:
+  workflow_dispatch: ~
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to website to production
+    runs-on: ubuntu-latest
+    container: node:18-alpine
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+    
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Bash
+        id: bash-install
+        run: apk add --no-cache bash
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run build
+        run: pnpm run build
+
+#      - uses: FirebaseExtended/action-hosting-deploy@v0
+#        with:
+#          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+#          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
+#          channelId: live
+
+      - name: Install Firebase CLI
+        run: pnpm install -g firebase-tools
+
+      - name: Deploy with Firebase
+        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
+
