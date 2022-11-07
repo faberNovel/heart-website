@@ -1,4 +1,4 @@
-name: Pull request
+name: Pull request lint
 
 on:
   pull_request:
