@@ -7,9 +7,8 @@ on:
 jobs:
   lint:
     name: Lint
-    runs-on: [self-hosted, docker]
-    container:
-      image: docker://node:18-buster
+    runs-on: ubuntu-latest
+    container: node:18-alpine
 
     steps:
       - name: Checkout
