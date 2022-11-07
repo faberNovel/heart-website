@@ -23,9 +23,9 @@ jobs:
           version: 7
           run_install: false
 
-      - name: Install Bash
-        id: bash-install
-        run: apk add --no-cache bash
+      - name: Install Bash and tar
+        id: alpine-package-install
+        run: apk add --no-cache bash tar
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -47,15 +47,14 @@ jobs:
       - name: Run build
         run: pnpm run build
 
-#      - uses: FirebaseExtended/action-hosting-deploy@v0
-#        with:
-#          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-#          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
-#          channelId: live
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
+          channelId: live
 
-      - name: Install Firebase CLI
-        run: pnpm install -g firebase-tools
+#      - name: Install Firebase CLI
+#        run: pnpm install -g firebase-tools
 
-      - name: Deploy with Firebase
-        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
+#      - name: Deploy with Firebase
+#        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
 
