@@ -1,12 +1,14 @@
-name: 🧹 Pull request lint
+name: 🚀 Publish the website to production
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
+  workflow_dispatch: ~
+  push:
+    branches:
+      - master
 
 jobs:
-  lint:
-    name: Lint
+  deploy:
+    name: Deploy to website to production
     runs-on: ubuntu-latest
     container: node:18-alpine
 
@@ -42,5 +44,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run lint
-        run: pnpm run lint
+      - name: Run build
+        run: pnpm run build
+
+#      - uses: FirebaseExtended/action-hosting-deploy@v0
+#        with:
+#          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+#          firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
+#          channelId: live
+
+      - name: Install Firebase CLI
+        run: pnpm install -g firebase-tools
+
+      - name: Deploy with Firebase
+        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
+
