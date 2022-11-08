@@ -51,5 +51,6 @@ jobs:
 
       - name: 🔬 Analyze the website with Dareboost
         id: dareboost-analyze
-        run:
+        run: |
+          cd ci/conf
           pnpm exec heart dareboost --file dareboost.json
