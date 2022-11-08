@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
     
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -52,6 +52,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEART_WEBSITE_PROD }}'
           projectId: heart-website-prod
+          channelId: live
 
 #      - name: Install Firebase CLI
 #        run: pnpm install -g firebase-tools
