@@ -47,15 +47,8 @@ jobs:
       - name: Run build
         run: pnpm run build
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEART_WEBSITE_PROD }}'
-          projectId: heart-website-prod
-          channelId: live
+      - name: Install Firebase CLI
+        run: pnpm install -g firebase-tools
 
-#      - name: Install Firebase CLI
-#        run: pnpm install -g firebase-tools
-
-#      - name: Deploy with Firebase
-#        run: firebase deploy
+      - name: Deploy with Firebase
+        run: firebase deploy --token "${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEART_WEBSITE_PROD }}" --non-interactive
