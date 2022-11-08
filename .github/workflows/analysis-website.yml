@@ -46,7 +46,7 @@ jobs:
         run: |
           cd ci/conf
           pnpm init
-          pnpm install --dev @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
+          pnpm install -D @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
 
 
       - name: 🔬 Analyze the website with Dareboost
