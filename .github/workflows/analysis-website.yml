@@ -50,6 +50,9 @@ jobs:
 
 
       - name: 🔬 Analyze the website with Dareboost
+        env:
+          DAREBOOST_API_TOKEN: ${{ secrets.DAREBOOST_API_TOKEN }}
+          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         id: dareboost-analyze
         run: |
           cd ci/conf
