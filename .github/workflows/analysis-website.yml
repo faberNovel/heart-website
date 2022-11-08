@@ -6,6 +6,11 @@ on:
     - cron:  '0 1 * * 0'
   workflow_dispatch:
 
+env:
+  CHROME_PATH: /usr/bin/google-chrome-stable
+  DAREBOOST_API_TOKEN: ${{ secrets.DAREBOOST_API_TOKEN }}
+  SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+
 jobs:
   deploy:
     name: Website analysis
@@ -48,12 +53,22 @@ jobs:
           pnpm init
           pnpm install -D @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
 
+      - name: Install Chrome
+        id: install-chrome
+        run: |
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+          sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+          apt-get update
+          apt-get install --yes google-chrome-stable
 
       - name: 🔬 Analyze the website with Dareboost
-        env:
-          DAREBOOST_API_TOKEN: ${{ secrets.DAREBOOST_API_TOKEN }}
-          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
         id: dareboost-analyze
         run: |
           cd ci/conf
           pnpm exec heart dareboost --file dareboost.json
+
+      - name: 🔬 Analyze the website with Google Lighthouse
+        id: lighthouse-analyze
+        run: |
+          cd ci/conf
+          pnpm exec heart lighthouse --file lighthouse.json
