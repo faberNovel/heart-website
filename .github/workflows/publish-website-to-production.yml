@@ -51,4 +51,4 @@ jobs:
         run: pnpm install -g firebase-tools
 
       - name: Deploy with Firebase
-        run: firebase deploy --token "${{ secrets.FIREBASE_SERVICE_ACCOUNT_HEART_WEBSITE_PROD }}" --non-interactive
+        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
