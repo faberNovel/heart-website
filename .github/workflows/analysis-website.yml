@@ -1,5 +1,10 @@
 name: 🏗 Website analysis
 
+on:
+  schedule:
+    # All sunday at 1AM
+    - cron:  '0 1 * * 0'
+
 jobs:
   deploy:
     name: Website analysis
