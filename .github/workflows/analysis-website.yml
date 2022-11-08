@@ -59,27 +59,35 @@ jobs:
 
       - name: 🔬 Analyze the website with Dareboost
         id: dareboost-analyze
+        continue-on-error: true
         run: |
           cd ci/conf
           pnpm exec heart dareboost --file dareboost.json
 
       - name: 🔬 Analyze the website with Google Lighthouse
         id: lighthouse-analyze
+        continue-on-error: true
         run: |
           cd ci/conf
           pnpm exec heart lighthouse --file lighthouse.json
 
       - name: 🔬 Analyze the website with Mozilla Observatory
+        id: observatory-analyze
+        continue-on-error: true
         run: |
           cd ci/conf
           pnpm exec heart observatory --file observatory.json
 
       - name: 🔬 Analyze the website with GreenIT
+        id: greenit-analyze
+        continue-on-error: true
         run: |
           cd ci/conf
           pnpm exec heart greenit --file greenit.json
 
       - name: 🔬 Analyze the website with SSL Labs Server
+        id: ssl-labs-server-analyze
+        continue-on-error: true
         run: |
           cd ci/conf
           pnpm exec heart ssllabs-server --file ssllabs-server.json
