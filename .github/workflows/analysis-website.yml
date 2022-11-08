@@ -68,3 +68,18 @@ jobs:
         run: |
           cd ci/conf
           pnpm exec heart lighthouse --file lighthouse.json
+
+      - name: 🔬 Analyze the website with Mozilla Observatory
+        run: |
+          cd ci/conf
+          pnpm exec heart observatory --file observatory.json
+
+      - name: 🔬 Analyze the website with GreenIT
+        run: |
+          cd ci/conf
+          pnpm exec heart greenit --file greenit.json
+
+      - name: 🔬 Analyze the website with SSL Labs Server
+        run: |
+          cd ci/conf
+          pnpm exec heart ssllabs-server --file ssllabs-server.json
