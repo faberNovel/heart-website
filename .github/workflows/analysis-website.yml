@@ -1,0 +1,49 @@
+name: 🏗 Website analysis
+
+jobs:
+  deploy:
+    name: Website analysis
+    runs-on: ubuntu-latest
+    container: node:18-alpine
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+    
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Bash and tar
+        id: alpine-package-install
+        run: apk add --no-cache bash tar
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Heart packages for analysis
+        id: install-heart-for-analysis
+        run: |
+          cd ci/conf
+          pnpm init
+          pnpm install --dev @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
+
+
+      - name: 🔬 Analyze the website with Dareboost
+        id: dareboost-analyze
+        run:
+          pnpm exec heart dareboost --file dareboost.json
