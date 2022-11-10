@@ -11,7 +11,9 @@ jobs:
     name: Deploy to production
     runs-on: ubuntu-latest
     container: node:18-alpine
-    environment: production
+    environment:
+      name: production
+      url: https://heart.fabernovel.com
 
     steps:
       - name: Install Bash and tar
