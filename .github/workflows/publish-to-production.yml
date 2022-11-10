@@ -1,4 +1,4 @@
-name: 🚀 Publish the website to production
+name: 🚀 Publish to production
 
 on:
   workflow_dispatch: ~
@@ -8,24 +8,25 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to website to production
+    name: Deploy to production
     runs-on: ubuntu-latest
     container: node:18-alpine
+    environment: production
 
     steps:
+      - name: Install Bash and tar
+        id: alpine-package-install
+        run: apk add --no-cache bash tar
+
       - name: Checkout
         uses: actions/checkout@v3
-    
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
           version: 7
           run_install: false
-
-      - name: Install Bash and tar
-        id: alpine-package-install
-        run: apk add --no-cache bash tar
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -44,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run build
+      - name: Build
         run: pnpm run build
 
       - name: Install Firebase CLI
