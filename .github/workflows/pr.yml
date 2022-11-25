@@ -23,10 +23,6 @@ jobs:
         with:
           run_install: false
 
-      - name: Install Bash and tar
-        id: alpine-package-install
-        run: apk add --no-cache bash tar
-
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
