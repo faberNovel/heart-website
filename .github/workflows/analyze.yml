@@ -15,11 +15,14 @@ jobs:
   deploy:
     name: Website analysis
     runs-on: ubuntu-latest
-    container: node:18
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
     
       - uses: pnpm/action-setup@v2
         name: Install pnpm
