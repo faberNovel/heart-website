@@ -1,4 +1,4 @@
-name: 🏗 Analysis
+name: 🔬 Website analysis
 
 on:
   workflow_dispatch: ~
@@ -12,13 +12,18 @@ env:
   SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
 
 jobs:
-  deploy:
+  analyze:
     name: Website analysis
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Install Chrome
+        id: install-chrome
+        run: |
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+          sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+          apt-get update
+          apt-get install --yes google-chrome-stable
 
       - uses: actions/setup-node@v3
         with:
@@ -26,13 +31,10 @@ jobs:
     
       - uses: pnpm/action-setup@v2
         name: Install pnpm
-        id: pnpm-install
         with:
-          version: 7
           run_install: false
 
       - name: Get pnpm store directory
-        id: pnpm-cache
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
@@ -45,52 +47,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - uses: actions/checkout@v3
+
       - name: Install Heart packages for analysis
-        id: install-heart-for-analysis
         run: |
-          cd ci/conf
           pnpm init
           pnpm install -D @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
-
-      - name: Install Chrome
-        id: install-chrome
-        run: |
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-          sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          apt-get update
-          apt-get install --yes google-chrome-stable
+        working-directory: ./analysis
 
       - name: 🔬 Analyze the website with Dareboost
-        id: dareboost-analyze
+        run: pnpm exec heart dareboost --file conf/dareboost.json
+        working-directory: ./analysis
         continue-on-error: true
-        run: |
-          cd ci/conf
-          pnpm exec heart dareboost --file dareboost.json
-
-      - name: 🔬 Analyze the website with Google Lighthouse
-        id: lighthouse-analyze
-        continue-on-error: true
-        run: |
-          cd ci/conf
-          pnpm exec heart lighthouse --file lighthouse.json
-
-      - name: 🔬 Analyze the website with Mozilla Observatory
-        id: observatory-analyze
-        continue-on-error: true
-        run: |
-          cd ci/conf
-          pnpm exec heart observatory --file observatory.json
 
       - name: 🔬 Analyze the website with GreenIT
-        id: greenit-analyze
+        run: pnpm exec heart greenit --file conf/greenit.json
+        working-directory: ./analysis
         continue-on-error: true
-        run: |
-          cd ci/conf
-          pnpm exec heart greenit --file greenit.json
+
+      - name: 🔬 Analyze the website with Google Lighthouse
+        run: pnpm exec heart lighthouse --file conf/lighthouse.json
+        working-directory: ./analysis
+        continue-on-error: true
+
+      - name: 🔬 Analyze the website with Mozilla Observatory
+        run: pnpm exec heart observatory --file conf/observatory.json
+        working-directory: ./analysis
+        continue-on-error: true
 
       - name: 🔬 Analyze the website with SSL Labs Server
-        id: ssl-labs-server-analyze
+        run: pnpm exec heart ssllabs-server --file conf/ssllabs-server.json
+        working-directory: ./analysis
         continue-on-error: true
-        run: |
-          cd ci/conf
-          pnpm exec heart ssllabs-server --file ssllabs-server.json
