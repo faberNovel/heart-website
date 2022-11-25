@@ -8,26 +8,24 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to production
+    name: Publish to production
     runs-on: ubuntu-latest
-    container: node:18-alpine
     environment:
       name: production
       url: https://heart.fabernovel.com
 
     steps:
-      - name: Install Bash and tar
-        id: alpine-package-install
-        run: apk add --no-cache bash tar
-
       - name: Checkout
         uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
           run_install: false
 
       - name: Get pnpm store directory
