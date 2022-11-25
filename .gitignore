@@ -4,17 +4,7 @@
 # Dependency directories
 node_modules/
 
-# Optional eslint cache
-.eslintcache
-
-# Output of 'npm pack'
-*.tgz
-
-# dotenv environment variables file
-.env
-
 # Common toolchain intermediate files
-lib
 dist
 
 # OS X temporary files
