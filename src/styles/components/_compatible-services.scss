@@ -21,7 +21,7 @@
     }
 
     &:hover img {
-      transform: translateY(-rem(10));
+      transform: translateY(rem(-10));
       filter: grayscale(0);
     }
   }

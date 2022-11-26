@@ -4,13 +4,13 @@ section#compatible-services.section.has-background-white
 
     -
       const services = [
-        { name: 'dareboost', width: 235 },
-        { name: 'google-lighthouse', width: 80 },
-        { name: 'ecoindex', width: 220 },
-        { name: 'qualys-ssl-labs', width: 170 },
-        { name: 'mozilla-observatory', width: 202 },
-        { name: 'google-bigquery', width: 182 },
-        { name: 'slack', width: 176 }
+        { name: 'dareboost', width: 235, height: 78 },
+        { name: 'google-lighthouse', width: 80, height: 80 },
+        { name: 'ecoindex', width: 220, height: 56 },
+        { name: 'qualys-ssl-labs', width: 170, height: 54 },
+        { name: 'mozilla-observatory', width: 202, height: 60 },
+        { name: 'google-bigquery', width: 182, height: 64 },
+        { name: 'slack', width: 176, height: 55 }
       ]
 
     .compatibleServices
@@ -19,7 +19,7 @@ section#compatible-services.section.has-background-white
         each service, index in services
           .column.is-3.has-text-centered
             .compatibleServices__item
-              +svg(service.name, true, 'services/')(width=service.width)
+              +svg(service.name, true, 'services/')(width=service.width height=service.height)
 
       //- Mobile only with carousel (<= 768px)
       .slider.is-hidden-tablet
