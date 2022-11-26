@@ -10,11 +10,16 @@ jobs:
   deploy:
     name: Publish to production
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     environment:
       name: production
       url: https://heart.fabernovel.com
 
     steps:
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -48,8 +53,5 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Install Firebase CLI
-        run: pnpm install -g firebase-tools
-
       - name: Deploy with Firebase
-        run: firebase deploy --token "${{ secrets.FIREBASE_TOKEN }}" --non-interactive
+        run: firebase deploy --non-interactive
