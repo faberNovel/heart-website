@@ -28,3 +28,4 @@ https://www.linkedin.com/in/bgatellier/
 
 /* THANKS */
 Julien Liottier
+Fatoumata Valbert-Geraud

@@ -4,15 +4,18 @@
   "description": "Heart's website",
   "homepage": "https://heart.fabernovel.com",
   "bugs": {
-    "url": "https://gitlab.com/fabernovel/heart-website/issues"
+    "url": "https://github.com/faberNovel/heart-website/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:fabernovel/heart-website.git"
+    "url": "git@github.com:faberNovel/heart-website.git"
   },
   "license": "MIT",
   "contributors": [
-    "Julien Roche <julien.roche@fabernovel.com>"
+    "Julien Roche <julien.roche@fabernovel.com>",
+    "Bastien Gatellier <bastien.gatellier@fabernovel.com>",
+    "Julien Liottier",
+    "Fatoumata Valbert-Geraud"
   ],
   "main": "dist/index.html",
   "scripts": {
