@@ -7,63 +7,130 @@ on:
     - cron:  '0 1 * * 0'
 
 jobs:
-  dareboost:
-    name: 🔬 Analyze the website with Dareboost
-    runs-on: ubuntu-latest
+  # dareboost:
+  #   runs-on: ubuntu-latest
+  #   name: 🔬 Analyze the website with Dareboost
+  #   strategy:
+  #     matrix:
+  #       dareboost_configuration: [
+  #           "analysis/conf/greenit/home/desktop.json",
+  #           "analysis/conf/greenit/home/mobile.json",
+  #           "analysis/conf/greenit/expertise/desktop.json",
+  #           "analysis/conf/greenit/expertise/mobile.json",
+  #       ]
 
-    steps:
-      - uses: faberNovel/heart-action@feat/init
-        with:
-          analysisService: dareboost
-          file: analysis/conf/dareboost.json
-          listenerServices: slack
-          dareboost_api_token: ${{ secrets.DAREBOOST_API_TOKEN }}
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: dareboost
+  #         file: ${{ matrix.dareboost_configuration }}
+  #         listener_services: slack
+  #         dareboost_api_token: ${{ secrets.DAREBOOST_API_TOKEN }}
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN_BGATELLIER }}
+  #         slack_channel_id: '#heart-debug'
+  #       continue-on-error: true
 
-  greenit:
-    name: 🔬 Analyze the website with GreenIT
-    runs-on: ubuntu-latest
+  # dareboost:
+  #   name: 🔬 Analyze the website with Dareboost
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: faberNovel/heart-action@feat/init
-        with:
-          analysisService: greenit
-          file: analysis/conf/greenit.json
-          listenerServices: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: dareboost
+  #         file: analysis/conf/dareboost.json
+  #         listener_services: slack
+  #         dareboost_api_token: ${{ secrets.DAREBOOST_API_TOKEN }}
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+
+  # greenit:
+  #   runs-on: ubuntu-latest
+  #   name: 🔬 Analyse the website with GreenIT
+  #   strategy:
+  #     matrix:
+  #       greenit_configuration: [
+  #           "analysis/conf/greenit/home/desktop.json",
+  #           "analysis/conf/greenit/home/mobile.json",
+  #           "analysis/conf/greenit/expertise/desktop.json",
+  #           "analysis/conf/greenit/expertise/mobile.json",
+  #       ]
+
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: greenit
+  #         file: ${{ matrix.greenit_configuration }}
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN_BGATELLIER }}
+  #         slack_channel_id: '#heart-debug'
+  #       continue-on-error: true
+
+  # greenit:
+  #   name: 🔬 Analyze the website with GreenIT
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: greenit
+  #         file: analysis/conf/greenit.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
 
   lighthouse:
-    name: 🔬 Analyze the website with Google Lighthouse
     runs-on: ubuntu-latest
+    name: 🔬 Analyse the website with Google Lighthouse
+    strategy:
+      matrix:
+        lighthouse_configuration: [
+            "analysis/conf/lighthouse/home/desktop.json",
+            "analysis/conf/lighthouse/home/mobile.json",
+            "analysis/conf/lighthouse/expertise/desktop.json",
+            "analysis/conf/lighthouse/expertise/mobile.json",
+        ]
 
     steps:
       - uses: faberNovel/heart-action@feat/init
         with:
-          analysisService: lighthouse
-          file: analysis/conf/lighthouse.json
-          listenerServices: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          analysis_service: lighthouse
+          file: ${{ matrix.lighthouse_configuration }}
+          listener_services: slack
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN_BGATELLIER }}
+          slack_channel_id: '#heart-debug'
+        continue-on-error: true
+  
+  # lighthouse:
+  #   name: 🔬 Analyze the website with Google Lighthouse
+  #   runs-on: ubuntu-latest
 
-  observatory:
-    name: 🔬 Analyze the website with Mozilla Observatory
-    runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: lighthouse
+  #         file: analysis/conf/lighthouse.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
 
-    steps:
-      - uses: faberNovel/heart-action@feat/init
-        with:
-          analysisService: observatory
-          file: analysis/conf/observatory.json
-          listenerServices: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  # observatory:
+  #   name: 🔬 Analyze the website with Mozilla Observatory
+  #   runs-on: ubuntu-latest
 
-  ssllabs-server:
-    name: 🔬 Analyze the website with SSL Labs Server
-    runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: observatory
+  #         file: analysis/conf/observatory.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
 
-    steps:
-      - uses: faberNovel/heart-action@feat/init
-        with:
-          analysisService: ssllabs-server
-          file: analysis/conf/ssllabs-server.json
-          listenerServices: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  # ssllabs-server:
+  #   name: 🔬 Analyze the website with SSL Labs Server
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - uses: faberNovel/heart-action@feat/init
+  #       with:
+  #         analysis_service: ssllabs-server
+  #         file: analysis/conf/ssllabs-server.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}

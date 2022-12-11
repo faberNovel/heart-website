@@ -1,0 +1,21 @@
+{
+    "url":"https://www.fabernovel.com/expertise",
+    "config":{
+        "extends": "lighthouse:default",
+        "settings": {
+          "maxWaitForFcp": 15000,
+          "maxWaitForLoad": 351000,
+          "skipAudits": ["uses-http2"]
+        },
+        "audits": [
+          "metrics/first-contentful-paint-3g"
+        ],
+        "categories": {
+          "performance": {
+            "auditRefs": [
+              {"id": "first-contentful-paint-3g", "weight": 0}
+            ]
+          }
+        }
+    }
+}
