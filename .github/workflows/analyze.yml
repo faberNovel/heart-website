@@ -7,53 +7,63 @@ on:
     - cron:  '0 1 * * 0'
 
 jobs:
-  analyze:
-    name: Website analysis
+  dareboost:
+    name: 🔬 Analyze the website with Dareboost
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔬 Analyze the website with Dareboost
-        uses: faberNovel/heart-action@feat/init
+      - uses: faberNovel/heart-action@feat/init
         with:
           analysisService: dareboost
           file: analysis/conf/dareboost.json
           listenerServices: slack
           dareboost_api_token: ${{ secrets.DAREBOOST_API_TOKEN }}
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
 
-      - name: 🔬 Analyze the website with GreenIT
-        uses: faberNovel/heart-action@feat/init
+  greenit:
+    name: 🔬 Analyze the website with GreenIT
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: faberNovel/heart-action@feat/init
         with:
           analysisService: greenit
           file: analysis/conf/greenit.json
           listenerServices: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
 
-      - name: 🔬 Analyze the website with Google Lighthouse
-        uses: faberNovel/heart-action@feat/init
+  lighthouse:
+    name: 🔬 Analyze the website with Google Lighthouse
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: faberNovel/heart-action@feat/init
         with:
           analysisService: lighthouse
           file: analysis/conf/lighthouse.json
           listenerServices: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
 
-      - name: 🔬 Analyze the website with Mozilla Observatory
-        uses: faberNovel/heart-action@feat/init
+  observatory:
+    name: 🔬 Analyze the website with Mozilla Observatory
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: faberNovel/heart-action@feat/init
         with:
           analysisService: observatory
           file: analysis/conf/observatory.json
           listenerServices: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
 
-      - name: 🔬 Analyze the website with SSL Labs Server
-        uses: faberNovel/heart-action@feat/init
+  ssllabs-server:
+    name: 🔬 Analyze the website with SSL Labs Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: faberNovel/heart-action@feat/init
         with:
           analysisService: ssllabs-server
           file: analysis/conf/ssllabs-server.json
           listenerServices: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
