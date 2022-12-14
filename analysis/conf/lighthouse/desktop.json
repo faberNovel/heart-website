@@ -1,9 +1,10 @@
 {
-    "url":"https://www.fabernovel.com/",
+    "url":"https://heart.fabernovel.com",
     "config": {
+        "extends": "lighthouse:default",
         "settings": {
-            "maxWaitForFcp": 151000,
-            "maxWaitForLoad": 351000,
+            "maxWaitForFcp": 15000,
+            "maxWaitForLoad": 35000,
             "formFactor": "desktop",
             "throttling": {
                 "rttMs": 40,

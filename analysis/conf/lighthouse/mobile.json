@@ -1,5 +1,5 @@
 {
-    "url":"https://www.fabernovel.com/",
+    "url":"https://heart.fabernovel.com",
     "config":{
         "extends": "lighthouse:default",
         "settings": {
