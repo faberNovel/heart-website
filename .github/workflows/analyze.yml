@@ -6,76 +6,65 @@ on:
     # All sunday at 1AM
     - cron:  '0 1 * * 0'
 
-env:
-  CHROME_PATH: /usr/bin/google-chrome-stable
-  DAREBOOST_API_TOKEN: ${{ secrets.DAREBOOST_API_TOKEN }}
-  SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
-
 jobs:
-  analyze:
-    name: Website analysis
+  greenit:
+    name: 🔬 Analyze with GreenIT
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        greenit_configuration: [
+            "analysis/conf/greenit/desktop.json",
+            "analysis/conf/greenit/mobile.json",
+        ]
+
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
+        with:
+          analysis_service: greenit
+          file: ${{ matrix.greenit_configuration }}
+          listener_services: slack
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+        continue-on-error: true
+
+  lighthouse:
+    name: 🔬 Analyze with Google Lighthouse
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lighthouse_configuration: [
+            "analysis/conf/lighthouse/desktop.json",
+            "analysis/conf/lighthouse/mobile.json",
+        ]
+
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
+        with:
+          analysis_service: lighthouse
+          file: ${{ matrix.lighthouse_configuration }}
+          listener_services: slack
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+        continue-on-error: true
+
+  observatory:
+    name: 🔬 Analyze with Mozilla Observatory
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Chrome
-        id: install-chrome
-        run: |
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-          sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          apt-get update
-          apt-get install --yes google-chrome-stable
-
-      - uses: actions/setup-node@v3
+      - uses: faberNovel/heart-action@v1.0.0
         with:
-          node-version-file: .nvmrc
-    
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
+          analysis_service: observatory
+          file: analysis/conf/observatory.json
+          listener_services: slack
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+
+  ssllabs-server:
+    name: 🔬 Analyze with SSL Labs Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
         with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - uses: actions/checkout@v3
-
-      - name: Install Heart packages for analysis
-        run: |
-          pnpm init
-          pnpm install -D @fabernovel/heart-cli @fabernovel/heart-dareboost @fabernovel/heart-greenit @fabernovel/heart-lighthouse @fabernovel/heart-observatory @fabernovel/heart-slack @fabernovel/heart-ssllabs-server
-        working-directory: ./analysis
-
-      - name: 🔬 Analyze the website with Dareboost
-        run: pnpm exec heart dareboost --file conf/dareboost.json
-        working-directory: ./analysis
-        continue-on-error: true
-
-      - name: 🔬 Analyze the website with GreenIT
-        run: pnpm exec heart greenit --file conf/greenit.json
-        working-directory: ./analysis
-        continue-on-error: true
-
-      - name: 🔬 Analyze the website with Google Lighthouse
-        run: pnpm exec heart lighthouse --file conf/lighthouse.json
-        working-directory: ./analysis
-        continue-on-error: true
-
-      - name: 🔬 Analyze the website with Mozilla Observatory
-        run: pnpm exec heart observatory --file conf/observatory.json
-        working-directory: ./analysis
-        continue-on-error: true
-
-      - name: 🔬 Analyze the website with SSL Labs Server
-        run: pnpm exec heart ssllabs-server --file conf/ssllabs-server.json
-        working-directory: ./analysis
-        continue-on-error: true
+          analysis_service: ssllabs-server
+          file: analysis/conf/ssllabs-server.json
+          listener_services: slack
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
