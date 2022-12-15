@@ -18,7 +18,7 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@feat/init
+      - uses: faberNovel/heart-action@v1.0.0
         with:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
@@ -37,7 +37,7 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@feat/init
+      - uses: faberNovel/heart-action@v1.0.0
         with:
           analysis_service: lighthouse
           file: ${{ matrix.lighthouse_configuration }}
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@feat/init
+      - uses: faberNovel/heart-action@v1.0.0
         with:
           analysis_service: observatory
           file: analysis/conf/observatory.json
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@feat/init
+      - uses: faberNovel/heart-action@v1.0.0
         with:
           analysis_service: ssllabs-server
           file: analysis/conf/ssllabs-server.json
