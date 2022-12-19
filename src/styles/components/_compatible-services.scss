@@ -18,6 +18,8 @@
     img {
       filter: grayscale(1);
       transition: filter 0.3s, transform 1s;
+      max-height: rem(80);
+      max-width: 80%;
     }
 
     &:hover img {

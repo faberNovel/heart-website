@@ -186,6 +186,11 @@
       margin-bottom: rem(10);
     }
 
+    img {
+      max-height: rem(52);
+      max-width: rem(52);
+    }
+
     &.-big {
       width: rem(152);
       height: rem(152);
