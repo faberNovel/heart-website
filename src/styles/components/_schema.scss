@@ -34,7 +34,7 @@
     }
 
     @include touch {
-      left: -rem(13);
+      left: rem(-13);
     }
 
     &Number {
@@ -46,7 +46,7 @@
       transform: translateX(-50%);
 
       @include desktop {
-        top: -rem(12);
+        top: rem(-12);
         left: calc(50% + #{rem(4)});
       }
     }
