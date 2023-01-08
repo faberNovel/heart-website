@@ -3,7 +3,7 @@ name: 🔬 Website analysis
 on:
   workflow_dispatch: ~
   schedule:
-    # All sunday at 1AM
+    # Every sunday at 1AM
     - cron:  '0 1 * * 0'
 
 jobs:
@@ -26,45 +26,45 @@ jobs:
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
         continue-on-error: true
 
-  lighthouse:
-    name: 🔬 Analyze with Google Lighthouse
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lighthouse_configuration: [
-            "analysis/conf/lighthouse/desktop.json",
-            "analysis/conf/lighthouse/mobile.json",
-        ]
+  # lighthouse:
+  #   name: 🔬 Analyze with Google Lighthouse
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       lighthouse_configuration: [
+  #           "analysis/conf/lighthouse/desktop.json",
+  #           "analysis/conf/lighthouse/mobile.json",
+  #       ]
 
-    steps:
-      - uses: faberNovel/heart-action@v1.0.0
-        with:
-          analysis_service: lighthouse
-          file: ${{ matrix.lighthouse_configuration }}
-          listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
-        continue-on-error: true
+  #   steps:
+  #     - uses: faberNovel/heart-action@v1.0.0
+  #       with:
+  #         analysis_service: lighthouse
+  #         file: ${{ matrix.lighthouse_configuration }}
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  #       continue-on-error: true
 
-  observatory:
-    name: 🔬 Analyze with Mozilla Observatory
-    runs-on: ubuntu-latest
+  # observatory:
+  #   name: 🔬 Analyze with Mozilla Observatory
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: faberNovel/heart-action@v1.0.0
-        with:
-          analysis_service: observatory
-          file: analysis/conf/observatory.json
-          listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  #   steps:
+  #     - uses: faberNovel/heart-action@v1.0.0
+  #       with:
+  #         analysis_service: observatory
+  #         file: analysis/conf/observatory.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
 
-  ssllabs-server:
-    name: 🔬 Analyze with SSL Labs Server
-    runs-on: ubuntu-latest
+  # ssllabs-server:
+  #   name: 🔬 Analyze with SSL Labs Server
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: faberNovel/heart-action@v1.0.0
-        with:
-          analysis_service: ssllabs-server
-          file: analysis/conf/ssllabs-server.json
-          listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+  #   steps:
+  #     - uses: faberNovel/heart-action@v1.0.0
+  #       with:
+  #         analysis_service: ssllabs-server
+  #         file: analysis/conf/ssllabs-server.json
+  #         listener_services: slack
+  #         slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
