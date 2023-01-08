@@ -4,7 +4,6 @@ section#compatible-services.section.has-background-white
 
     -
       const services = [
-        { name: 'dareboost', width: 235, height: 78 },
         { name: 'google-lighthouse', width: 80, height: 80 },
         { name: 'greenit', width: 383, height: 375 }, // PNG inside an SVG :/
         { name: 'qualys-ssl-labs', width: 170, height: 54 },
@@ -17,7 +16,7 @@ section#compatible-services.section.has-background-white
       //- Large screen only (> 768px)
       .columns.is-multiline.is-vcentered.is-justify-content-center.is-hidden-mobile
         each service, index in services
-          .column.is-3.has-text-centered
+          .column.is-4.has-text-centered
             .compatibleServices__item
               +svg(service.name, true, 'services/')(width=service.width height=service.height)
 
