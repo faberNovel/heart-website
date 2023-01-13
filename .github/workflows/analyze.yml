@@ -24,31 +24,22 @@ jobs:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
 
-  greenit_fabernovel:
+  greenit_desktop:
     runs-on: ubuntu-latest
     steps:
       - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
-          inline: '{"url":"https://www.fabernovel.com"}'
+          file: "analysis/conf/greenit/desktop.json"
         continue-on-error: true
 
-  greenit_lemonde:
+  greenit_mobile:
     runs-on: ubuntu-latest
     steps:
       - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
-          inline: '{"url":"https://www.lemonde.fr"}'
-        continue-on-error: true
-
-  greenit_ecoindex:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: faberNovel/heart-action@main
-        with:
-          analysis_service: greenit
-          inline: '{"url":"https://www.ecoindex.fr"}'
+          file: "analysis/conf/greenit/mobile.json"
         continue-on-error: true
 
   # lighthouse:
