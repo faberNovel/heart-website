@@ -11,6 +11,7 @@ jobs:
     name: 🔬 Analyze with GreenIT
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         greenit_configuration: [
             "analysis/conf/greenit/desktop.json",
@@ -18,16 +19,15 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@fix/trim
+      - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
-        continue-on-error: true
 
   greenit_fabernovel:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@fix/trim
+      - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.fabernovel.com"}'
@@ -36,7 +36,7 @@ jobs:
   greenit_lemonde:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@fix/trim
+      - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.lemonde.fr"}'
@@ -45,7 +45,7 @@ jobs:
   greenit_ecoindex:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@fix/trim
+      - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.ecoindex.fr"}'
