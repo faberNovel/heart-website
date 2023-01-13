@@ -18,35 +18,38 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@v1.0.0
+      - uses: faberNovel/heart-action@fix/trim
         with:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
         continue-on-error: true
 
-  greenit_fabernovbel:
+  greenit_fabernovel:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@v1.0.0
+      - uses: faberNovel/heart-action@fix/trim
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.fabernovel.com"}'
+        continue-on-error: true
 
   greenit_lemonde:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@v1.0.0
+      - uses: faberNovel/heart-action@fix/trim
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.lemonde.fr"}'
+        continue-on-error: true
 
   greenit_ecoindex:
     runs-on: ubuntu-latest
     steps:
-      - uses: faberNovel/heart-action@v1.0.0
+      - uses: faberNovel/heart-action@fix/trim
         with:
           analysis_service: greenit
           inline: '{"url":"https://www.ecoindex.fr"}'
+        continue-on-error: true
 
   # lighthouse:
   #   name: 🔬 Analyze with Google Lighthouse
