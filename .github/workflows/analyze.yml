@@ -30,7 +30,7 @@ jobs:
       - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
-          file: "analysis/conf/greenit/desktop.json"
+          file: analysis/conf/greenit/desktop.json
         continue-on-error: true
 
   greenit_mobile:
@@ -39,7 +39,16 @@ jobs:
       - uses: faberNovel/heart-action@main
         with:
           analysis_service: greenit
-          file: "analysis/conf/greenit/mobile.json"
+          file: analysis/conf/greenit/mobile.json
+        continue-on-error: true
+
+  greenit_ecoindex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: faberNovel/heart-action@main
+        with:
+          analysis_service: greenit
+          file: ecoindex.json
         continue-on-error: true
 
   # lighthouse:
