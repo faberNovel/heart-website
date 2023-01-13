@@ -1,3 +1,4 @@
 {
-    "url": "https://www.mk2.com/ile-de-france"
+    "url": "https://www.mk2.com/ile-de-france",
+    "timeout": 10000
 }

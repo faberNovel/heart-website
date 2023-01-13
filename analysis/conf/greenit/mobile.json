@@ -1,4 +1,5 @@
 {
     "url": "https://www.mk2.com/ile-de-france",
-    "device": "galaxyS20"
+    "device": "galaxyS20",
+    "timeout": 10000
 }
