@@ -22,9 +22,31 @@ jobs:
         with:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
-          listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
         continue-on-error: true
+
+  greenit_fabernovbel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
+        with:
+          analysis_service: greenit
+          inline: '{"url":"https://www.fabernovel.com"}'
+
+  greenit_lemonde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
+        with:
+          analysis_service: greenit
+          inline: '{"url":"https://www.lemonde.fr"}'
+
+  greenit_ecoindex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: faberNovel/heart-action@v1.0.0
+        with:
+          analysis_service: greenit
+          inline: '{"url":"https://www.ecoindex.fr"}'
 
   # lighthouse:
   #   name: 🔬 Analyze with Google Lighthouse
