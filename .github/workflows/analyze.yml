@@ -18,11 +18,11 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@feat/v2
         with:
           analysis_service: greenit
-          file: ${{ matrix.greenit_configuration }}
-          listener_services: slack
+          config: ${{ matrix.greenit_configuration }}
+          listener_services_only: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
         continue-on-error: true
 
@@ -37,11 +37,11 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@feat/v2
         with:
           analysis_service: lighthouse
-          file: ${{ matrix.lighthouse_configuration }}
-          listener_services: slack
+          config: ${{ matrix.lighthouse_configuration }}
+          listener_services_only: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
         continue-on-error: true
 
@@ -50,11 +50,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@feat/v2
         with:
           analysis_service: observatory
-          file: analysis/conf/observatory.json
-          listener_services: slack
+          config: analysis/conf/observatory.json
+          listener_services_only: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
 
   ssllabs-server:
@@ -62,9 +62,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@feat/v2
         with:
           analysis_service: ssllabs-server
-          file: analysis/conf/ssllabs-server.json
-          listener_services: slack
+          config: analysis/conf/ssllabs-server.json
+          listener_services_only: slack
           slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
