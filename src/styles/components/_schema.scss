@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: remFromPx(60);
+  margin-top: rem-from-px(60);
 
   @include desktop-only() {
     transform: scale(0.9);
@@ -12,15 +12,15 @@
 
   &__analysisContainer {
     display: flex;
-    margin-bottom: remFromPx(16);
+    margin-bottom: rem-from-px(16);
 
     &:last-child {
       margin: 0;
     }
 
     > * {
-      margin-right: remFromPx(16);
-      margin-left: remFromPx(16);
+      margin-right: rem-from-px(16);
+      margin-left: rem-from-px(16);
     }
   }
 
@@ -30,24 +30,24 @@
     position: relative;
 
     @include desktop {
-      margin: remFromPx(20) 0;
+      margin: rem-from-px(20) 0;
     }
 
     @include touch {
-      left: remFromPx(-13);
+      left: rem-from-px(-13);
     }
 
     &Number {
       position: absolute;
-      left: calc(100% - #{remFromPx(4)});
+      left: calc(100% - #{rem-from-px(4)});
       color: $color-madison;
       font-weight: $weight-bold;
-      font-size: remFromPx(30);
+      font-size: rem-from-px(30);
       transform: translateX(-50%);
 
       @include desktop {
-        top: remFromPx(-12);
-        left: calc(50% + #{remFromPx(4)});
+        top: rem-from-px(-12);
+        left: calc(50% + #{rem-from-px(4)});
       }
     }
   }
@@ -55,26 +55,26 @@
   &__column {
     border-color: rgba($grey-lighter, 0.5);
     border-style: dashed;
-    border-width: remFromPx(2) 0 0 0;
+    border-width: rem-from-px(2) 0 0 0;
 
     @include desktop {
-      padding: remFromPx(30) 0 remFromPx(75) 0;
-      border-width: 0 0 0 remFromPx(2);
+      padding: rem-from-px(30) 0 rem-from-px(75) 0;
+      border-width: 0 0 0 rem-from-px(2);
     }
 
     &:last-child {
-      border-width: remFromPx(2) 0;
+      border-width: rem-from-px(2) 0;
 
       @include desktop {
-        border-width: 0 remFromPx(2);
+        border-width: 0 rem-from-px(2);
       }
     }
 
     &.-isStep {
       position: relative;
-      width: remFromPx(300);
-      padding-right: remFromPx(7);
-      padding-left: remFromPx(7);
+      width: rem-from-px(300);
+      padding-right: rem-from-px(7);
+      padding-left: rem-from-px(7);
 
       @include touch {
         > *:not(#{$root}__arrow) {
@@ -84,39 +84,39 @@
 
       &1 {
         #{$root}__info {
-          top: remFromPx(25);
+          top: rem-from-px(25);
         }
       }
 
       &2 {
         #{$root}__info {
-          bottom: remFromPx(25);
+          bottom: rem-from-px(25);
         }
       }
 
       &3 {
         #{$root}__info {
-          bottom: remFromPx(25);
+          bottom: rem-from-px(25);
         }
       }
 
       &4 {
         #{$root}__info {
-          top: remFromPx(25);
+          top: rem-from-px(25);
         }
       }
 
       &2,
       &3 {
         #{$root}__arrowNumber {
-          top: remFromPx(73);
+          top: rem-from-px(73);
         }
       }
 
       &1,
       &4 {
         #{$root}__arrowNumber {
-          bottom: remFromPx(76);
+          bottom: rem-from-px(76);
         }
       }
     }
@@ -141,16 +141,16 @@
   &__info {
     display: flex;
     align-items: center;
-    height: remFromPx(70);
-    padding: remFromPx(10) remFromPx(20);
+    height: rem-from-px(70);
+    padding: rem-from-px(10) rem-from-px(20);
     color: $color-madison;
-    font-size: remFromPx(14);
+    font-size: rem-from-px(14);
     font-style: italic;
-    line-height: remFromPx(17);
+    line-height: rem-from-px(17);
     text-align: center;
     background-color: $grey-lightest;
-    border: remFromPx(1) dotted $grey-lighter;
-    border-radius: remFromPx(24);
+    border: rem-from-px(1) dotted $grey-lighter;
+    border-radius: rem-from-px(24);
   }
 
   &__listeners {
@@ -158,12 +158,12 @@
 
     @include desktop {
       position: absolute;
-      bottom: remFromPx(10);
+      bottom: rem-from-px(10);
     }
 
     > * {
-      margin-right: remFromPx(10);
-      margin-left: remFromPx(10);
+      margin-right: rem-from-px(10);
+      margin-left: rem-from-px(10);
     }
   }
 
@@ -172,45 +172,45 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: remFromPx(80);
-    height: remFromPx(80);
+    width: rem-from-px(80);
+    height: rem-from-px(80);
     color: $color-madison;
     font-weight: $weight-bold;
-    font-size: remFromPx(20);
+    font-size: rem-from-px(20);
     background-color: $white;
-    border-radius: remFromPx(20);
-    box-shadow: 0 remFromPx(4) remFromPx(8) 0 rgba($grey-light, 0.5);
+    border-radius: rem-from-px(20);
+    box-shadow: 0 rem-from-px(4) rem-from-px(8) 0 rgba($grey-light, 0.5);
 
     @include desktop {
-      margin-top: remFromPx(10);
-      margin-bottom: remFromPx(10);
+      margin-top: rem-from-px(10);
+      margin-bottom: rem-from-px(10);
     }
 
     img {
-      max-height: remFromPx(52);
-      max-width: remFromPx(52);
+      max-height: rem-from-px(52);
+      max-width: rem-from-px(52);
     }
 
     &.-big {
-      width: remFromPx(152);
-      height: remFromPx(152);
+      width: rem-from-px(152);
+      height: rem-from-px(152);
     }
 
     &.-tool {
-      width: remFromPx(204);
-      height: remFromPx(204);
+      width: rem-from-px(204);
+      height: rem-from-px(204);
       background: $gradient-alpha;
 
       svg {
         &:first-child {
-          width: remFromPx(94);
-          height: remFromPx(81);
+          width: rem-from-px(94);
+          height: rem-from-px(81);
         }
 
         &:last-child {
-          width: remFromPx(78);
-          height: remFromPx(28);
-          margin-top: remFromPx(10);
+          width: rem-from-px(78);
+          height: rem-from-px(28);
+          margin-top: rem-from-px(10);
         }
       }
     }

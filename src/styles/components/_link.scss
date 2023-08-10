@@ -1,7 +1,7 @@
 .link {
   color: $grey-dark;
   text-decoration: none;
-  border-bottom: remFromPx(2) solid $color-razzle-rose;
+  border-bottom: rem-from-px(2) solid $color-razzle-rose;
   transition: color 0.3s;
 
   &:hover {

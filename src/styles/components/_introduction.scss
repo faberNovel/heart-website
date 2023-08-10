@@ -6,37 +6,37 @@
   }
 
   &__description {
-    margin-bottom: remFromPx(25);
+    margin-bottom: rem-from-px(25);
     color: $white;
     font-weight: $weight-light;
-    font-size: remFromPx(28);
+    font-size: rem-from-px(28);
     line-height: 1.54;
     text-align: center;
 
     @include from($tablet) {
-      margin-bottom: remFromPx(65);
+      margin-bottom: rem-from-px(65);
       text-align: left;
     }
   }
 
   &__image {
     width: 100%;
-    max-width: remFromPx(450);
+    max-width: rem-from-px(450);
 
     @include from($tablet) {
-      max-width: remFromPx(622);
+      max-width: rem-from-px(622);
     }
   }
 
   &__title {
-    margin-bottom: remFromPx(40);
+    margin-bottom: rem-from-px(40);
     color: $white;
-    font-size: remFromPx(40);
+    font-size: rem-from-px(40);
     line-height: 1.25;
     text-align: center;
 
     @include from($tablet) {
-      margin-bottom: remFromPx(25);
+      margin-bottom: rem-from-px(25);
       text-align: left;
     }
   }

@@ -1,13 +1,13 @@
 .list {
-  margin: remFromPx(25) 0;
+  margin: rem-from-px(25) 0;
 
   &__item {
     display: flex;
     align-items: center;
-    margin-bottom: remFromPx(40);
+    margin-bottom: rem-from-px(40);
 
     @include from($tablet) {
-      margin-bottom: remFromPx(50);
+      margin-bottom: rem-from-px(50);
     }
 
     &:last-child {
@@ -15,18 +15,18 @@
     }
 
     &Icon {
-      $list-icon-width: remFromPx(18);
+      $list-icon-width: rem-from-px(18);
 
       flex: 0 0 $list-icon-width;
       width: $list-icon-width;
       height: $list-icon-width;
-      margin-right: remFromPx(22);
+      margin-right: rem-from-px(22);
     }
 
     &Text {
       color: $grey;
       font-weight: $weight-light;
-      font-size: remFromPx(22);
+      font-size: rem-from-px(22);
     }
   }
 }

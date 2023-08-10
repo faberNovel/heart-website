@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@function remFromPx($pxValue) {
+@function rem-from-px($pxValue) {
   @return #{math.div($pxValue, 16)}rem;
 }
 

@@ -24,7 +24,7 @@ html {
   scroll-behavior: smooth;
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: 100% remFromPx(1210);
+  background-size: 100% rem-from-px(1210);
 
   @include background-responsive(
     "../assets/images/background-purple",
@@ -33,7 +33,7 @@ html {
   );
 
   @include from($tablet) {
-    background-size: 100% remFromPx(765);
+    background-size: 100% rem-from-px(765);
   }
 
   @include tablet-only {

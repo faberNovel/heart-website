@@ -10,21 +10,21 @@
 
   &__icon {
     display: block;
-    width: remFromPx(48);
-    height: remFromPx(30);
-    margin: 0 0 remFromPx(20) 0;
+    width: rem-from-px(48);
+    height: rem-from-px(30);
+    margin: 0 0 rem-from-px(20) 0;
 
     @include from($tablet) {
-      margin: 0 remFromPx(22) 0 0;
+      margin: 0 rem-from-px(22) 0 0;
     }
   }
 
   &__text {
     color: $color-astronaut;
-    font-size: remFromPx(26);
+    font-size: rem-from-px(26);
 
     @include from($tablet) {
-      font-size: remFromPx(32);
+      font-size: rem-from-px(32);
     }
   }
 }

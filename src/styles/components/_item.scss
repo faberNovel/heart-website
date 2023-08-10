@@ -5,40 +5,40 @@
 
   &__description {
     font-weight: $weight-light;
-    font-size: remFromPx(18);
-    line-height: remFromPx(28);
+    font-size: rem-from-px(18);
+    line-height: rem-from-px(28);
     text-align: center;
   }
 
   &__icon {
     display: flex;
     align-items: flex-end;
-    height: remFromPx(62);
-    margin-bottom: remFromPx(20);
+    height: rem-from-px(62);
+    margin-bottom: rem-from-px(20);
 
     &.-shape {
-      width: remFromPx(66);
+      width: rem-from-px(66);
     }
 
     &.-social {
-      width: remFromPx(47);
+      width: rem-from-px(47);
     }
 
     &.-puzzle {
-      width: remFromPx(69);
+      width: rem-from-px(69);
     }
   }
 
   &__title {
-    margin-bottom: remFromPx(35);
+    margin-bottom: rem-from-px(35);
     color: $color-haiti;
-    font-size: remFromPx(24);
-    line-height: remFromPx(29);
+    font-size: rem-from-px(24);
+    line-height: rem-from-px(29);
     text-align: center;
 
     @include from($tablet) {
-      margin-bottom: remFromPx(25);
-      font-size: remFromPx(32);
+      margin-bottom: rem-from-px(25);
+      font-size: rem-from-px(32);
     }
   }
 }

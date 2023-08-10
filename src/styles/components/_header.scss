@@ -1,9 +1,9 @@
 .header {
   $root: &;
-  margin: remFromPx(38) remFromPx(10);
+  margin: rem-from-px(38) rem-from-px(10);
 
   @include from($tablet) {
-    margin: remFromPx(35) remFromPx(10);
+    margin: rem-from-px(35) rem-from-px(10);
   }
 
   // Branding
@@ -19,14 +19,14 @@
     }
 
     &Logo {
-      width: remFromPx(43);
-      height: remFromPx(37);
-      margin: 0 0 remFromPx(14) 0;
+      width: rem-from-px(43);
+      height: rem-from-px(37);
+      margin: 0 0 rem-from-px(14) 0;
 
       @include from($tablet) {
-        width: remFromPx(71);
-        height: remFromPx(61);
-        margin: 0 remFromPx(22) 0 0;
+        width: rem-from-px(71);
+        height: rem-from-px(61);
+        margin: 0 rem-from-px(22) 0 0;
       }
     }
 
@@ -41,24 +41,24 @@
     }
 
     &Name {
-      width: remFromPx(51);
-      height: remFromPx(20);
-      margin: 0 0 remFromPx(3) 0;
+      width: rem-from-px(51);
+      height: rem-from-px(20);
+      margin: 0 0 rem-from-px(3) 0;
 
       @include from($tablet) {
-        width: remFromPx(89);
-        height: remFromPx(32);
-        margin: 0 remFromPx(12) 0 0;
+        width: rem-from-px(89);
+        height: rem-from-px(32);
+        margin: 0 rem-from-px(12) 0 0;
       }
     }
 
     &Author {
       color: $white;
       font-weight: $weight-light;
-      font-size: remFromPx(10);
+      font-size: rem-from-px(10);
 
       @include from($tablet) {
-        font-size: remFromPx(16);
+        font-size: rem-from-px(16);
       }
     }
   }
@@ -100,11 +100,11 @@
   // Hamburger icon
   &__icon {
     position: absolute;
-    top: remFromPx(30);
-    left: remFromPx(30);
+    top: rem-from-px(30);
+    left: rem-from-px(30);
     z-index: 900;
     margin: 0;
-    padding: remFromPx(8) 0;
+    padding: rem-from-px(8) 0;
     color: $white;
     cursor: pointer;
     user-select: none;
@@ -115,8 +115,8 @@
 
     &Lines {
       position: relative;
-      width: remFromPx(24);
-      height: remFromPx(2);
+      width: rem-from-px(24);
+      height: rem-from-px(2);
       transition: background-color 0.2s ease-out;
 
       &:before,
@@ -136,11 +136,11 @@
       }
 
       &:before {
-        top: remFromPx(-8);
+        top: rem-from-px(-8);
       }
 
       &:after {
-        top: remFromPx(8);
+        top: rem-from-px(8);
       }
     }
   }
@@ -150,7 +150,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: remFromPx(60);
+    height: rem-from-px(60);
   }
 
   // Navigation
@@ -160,7 +160,7 @@
     display: flex;
 
     &Item {
-      margin: 0 remFromPx(50) 0 0;
+      margin: 0 rem-from-px(50) 0 0;
 
       &:last-child {
         margin: 0;
@@ -170,18 +170,18 @@
     &Link {
       color: $white;
       font-weight: $weight-normal;
-      font-size: remFromPx(16);
-      letter-spacing: remFromPx(1.24);
+      font-size: rem-from-px(16);
+      letter-spacing: rem-from-px(1.24);
       text-transform: uppercase;
       text-decoration: none;
       border-color: transparent;
       border-style: solid;
-      border-width: 0 0 remFromPx(2) 0;
+      border-width: 0 0 rem-from-px(2) 0;
       transition: color 0.3s, border-color 0.3s;
 
       svg {
-        width: remFromPx(36);
-        height: remFromPx(33);
+        width: rem-from-px(36);
+        height: rem-from-px(33);
         transition: opacity 0.3s;
       }
 
@@ -217,14 +217,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: remFromPx(260);
+      min-width: rem-from-px(260);
       background: rgba($color-haiti, 0.9);
       transform: translateX(-150vw);
       transition: transform 0.3s;
 
       #{$nav} {
         &Item {
-          margin: 0 0 remFromPx(50) 0;
+          margin: 0 0 rem-from-px(50) 0;
 
           &:last-child {
             margin: 0;
@@ -232,11 +232,11 @@
         }
 
         &Link {
-          font-size: remFromPx(20);
+          font-size: rem-from-px(20);
 
           svg {
-            width: remFromPx(45);
-            height: remFromPx(42);
+            width: rem-from-px(45);
+            height: rem-from-px(42);
           }
         }
 
