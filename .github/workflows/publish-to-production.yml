@@ -17,9 +17,6 @@ jobs:
       url: https://heart.fabernovel.com
 
     steps:
-      - name: Install Firebase CLI
-        run: curl -sL https://firebase.tools | bash
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -53,5 +50,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Deploy with Firebase
-        run: firebase deploy --non-interactive
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        name: Deploy with Firebase
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          channelId: live
