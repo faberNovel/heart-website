@@ -7,7 +7,7 @@
 
   &__dots {
     display: none;
-    margin-top: rem(60);
+    margin-top: rem-from-px(60);
 
     &Wrap {
       display: flex;
@@ -20,9 +20,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: rem(12);
-      height: rem(12);
-      margin: 0 rem(5);
+      width: rem-from-px(12);
+      height: rem-from-px(12);
+      margin: 0 rem-from-px(5);
       padding: 0;
       text-decoration: none;
       background-color: #d8d8d8;
@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-right: rem(50);
+    margin-right: rem-from-px(50);
     scroll-snap-align: start;
   }
 

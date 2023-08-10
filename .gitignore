@@ -2,6 +2,7 @@
 *.log
 
 # Dependency directories
+.cache
 node_modules/
 
 # Common toolchain intermediate files
@@ -16,8 +17,8 @@ dist
 # Firebase
 .firebase
 
-# Parcel files
-.cache
+# Parcel cache
+.parcel-cache
 
 # sprite
 src/assets/icons/sprite.svg

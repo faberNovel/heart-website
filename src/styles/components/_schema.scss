@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: rem(60);
+  margin-top: rem-from-px(60);
 
   @include desktop-only() {
     transform: scale(0.9);
@@ -12,15 +12,15 @@
 
   &__analysisContainer {
     display: flex;
-    margin-bottom: rem(16);
+    margin-bottom: rem-from-px(16);
 
     &:last-child {
       margin: 0;
     }
 
     > * {
-      margin-right: rem(16);
-      margin-left: rem(16);
+      margin-right: rem-from-px(16);
+      margin-left: rem-from-px(16);
     }
   }
 
@@ -30,24 +30,24 @@
     position: relative;
 
     @include desktop {
-      margin: rem(20) 0;
+      margin: rem-from-px(20) 0;
     }
 
     @include touch {
-      left: rem(-13);
+      left: rem-from-px(-13);
     }
 
     &Number {
       position: absolute;
-      left: calc(100% - #{rem(4)});
+      left: calc(100% - #{rem-from-px(4)});
       color: $color-madison;
       font-weight: $weight-bold;
-      font-size: rem(30);
+      font-size: rem-from-px(30);
       transform: translateX(-50%);
 
       @include desktop {
-        top: rem(-12);
-        left: calc(50% + #{rem(4)});
+        top: rem-from-px(-12);
+        left: calc(50% + #{rem-from-px(4)});
       }
     }
   }
@@ -55,26 +55,26 @@
   &__column {
     border-color: rgba($grey-lighter, 0.5);
     border-style: dashed;
-    border-width: rem(2) 0 0 0;
+    border-width: rem-from-px(2) 0 0 0;
 
     @include desktop {
-      padding: rem(30) 0 rem(75) 0;
-      border-width: 0 0 0 rem(2);
+      padding: rem-from-px(30) 0 rem-from-px(75) 0;
+      border-width: 0 0 0 rem-from-px(2);
     }
 
     &:last-child {
-      border-width: rem(2) 0;
+      border-width: rem-from-px(2) 0;
 
       @include desktop {
-        border-width: 0 rem(2);
+        border-width: 0 rem-from-px(2);
       }
     }
 
     &.-isStep {
       position: relative;
-      width: rem(300);
-      padding-right: rem(7);
-      padding-left: rem(7);
+      width: rem-from-px(300);
+      padding-right: rem-from-px(7);
+      padding-left: rem-from-px(7);
 
       @include touch {
         > *:not(#{$root}__arrow) {
@@ -84,39 +84,39 @@
 
       &1 {
         #{$root}__info {
-          top: rem(25);
+          top: rem-from-px(25);
         }
       }
 
       &2 {
         #{$root}__info {
-          bottom: rem(25);
+          bottom: rem-from-px(25);
         }
       }
 
       &3 {
         #{$root}__info {
-          bottom: rem(25);
+          bottom: rem-from-px(25);
         }
       }
 
       &4 {
         #{$root}__info {
-          top: rem(25);
+          top: rem-from-px(25);
         }
       }
 
       &2,
       &3 {
         #{$root}__arrowNumber {
-          top: rem(73);
+          top: rem-from-px(73);
         }
       }
 
       &1,
       &4 {
         #{$root}__arrowNumber {
-          bottom: rem(76);
+          bottom: rem-from-px(76);
         }
       }
     }
@@ -141,16 +141,16 @@
   &__info {
     display: flex;
     align-items: center;
-    height: rem(70);
-    padding: rem(10) rem(20);
+    height: rem-from-px(70);
+    padding: rem-from-px(10) rem-from-px(20);
     color: $color-madison;
-    font-size: rem(14);
+    font-size: rem-from-px(14);
     font-style: italic;
-    line-height: rem(17);
+    line-height: rem-from-px(17);
     text-align: center;
     background-color: $grey-lightest;
-    border: rem(1) dotted $grey-lighter;
-    border-radius: rem(24);
+    border: rem-from-px(1) dotted $grey-lighter;
+    border-radius: rem-from-px(24);
   }
 
   &__listeners {
@@ -158,12 +158,12 @@
 
     @include desktop {
       position: absolute;
-      bottom: rem(10);
+      bottom: rem-from-px(10);
     }
 
     > * {
-      margin-right: rem(10);
-      margin-left: rem(10);
+      margin-right: rem-from-px(10);
+      margin-left: rem-from-px(10);
     }
   }
 
@@ -172,45 +172,45 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: rem(80);
-    height: rem(80);
+    width: rem-from-px(80);
+    height: rem-from-px(80);
     color: $color-madison;
     font-weight: $weight-bold;
-    font-size: rem(20);
+    font-size: rem-from-px(20);
     background-color: $white;
-    border-radius: rem(20);
-    box-shadow: 0 rem(4) rem(8) 0 rgba($grey-light, 0.5);
+    border-radius: rem-from-px(20);
+    box-shadow: 0 rem-from-px(4) rem-from-px(8) 0 rgba($grey-light, 0.5);
 
     @include desktop {
-      margin-top: rem(10);
-      margin-bottom: rem(10);
+      margin-top: rem-from-px(10);
+      margin-bottom: rem-from-px(10);
     }
 
     img {
-      max-height: rem(52);
-      max-width: rem(52);
+      max-height: rem-from-px(52);
+      max-width: rem-from-px(52);
     }
 
     &.-big {
-      width: rem(152);
-      height: rem(152);
+      width: rem-from-px(152);
+      height: rem-from-px(152);
     }
 
     &.-tool {
-      width: rem(204);
-      height: rem(204);
+      width: rem-from-px(204);
+      height: rem-from-px(204);
       background: $gradient-alpha;
 
       svg {
         &:first-child {
-          width: rem(94);
-          height: rem(81);
+          width: rem-from-px(94);
+          height: rem-from-px(81);
         }
 
         &:last-child {
-          width: rem(78);
-          height: rem(28);
-          margin-top: rem(10);
+          width: rem-from-px(78);
+          height: rem-from-px(28);
+          margin-top: rem-from-px(10);
         }
       }
     }
