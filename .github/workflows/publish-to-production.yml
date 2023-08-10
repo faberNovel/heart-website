@@ -10,8 +10,6 @@ jobs:
   deploy:
     name: Publish to production
     runs-on: ubuntu-latest
-    env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     environment:
       name: production
       url: https://heart.fabernovel.com
