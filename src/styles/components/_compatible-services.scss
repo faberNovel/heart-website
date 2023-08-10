@@ -1,34 +1,34 @@
 .compatibleServices {
-  margin-top: rem(60);
+  margin-top: remFromPx(60);
 
   @include from($tablet) {
-    margin-top: rem(35);
+    margin-top: remFromPx(35);
   }
 
   .column {
-    padding: rem(20);
+    padding: remFromPx(20);
   }
 
   &__item {
     border-color: transparent;
     border-style: solid;
-    border-width: 0 0 rem(3) 0;
+    border-width: 0 0 remFromPx(3) 0;
     transition: border-color 0.3s;
 
     img {
       filter: grayscale(1);
       transition: filter 0.3s, transform 1s;
-      max-height: rem(80);
+      max-height: remFromPx(80);
       max-width: 80%;
     }
 
     &:hover img {
-      transform: translateY(rem(-10));
+      transform: translateY(remFromPx(-10));
       filter: grayscale(0);
     }
   }
 
   .slider__slide img {
-    height: rem(76);
+    height: remFromPx(76);
   }
 }

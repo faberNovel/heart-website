@@ -1,13 +1,13 @@
 .code {
-  padding: rem(60) rem(40);
+  padding: remFromPx(60) remFromPx(40);
   color: $white;
   white-space: pre-line;
   background: $black-bis;
-  border-radius: rem(4);
+  border-radius: remFromPx(4);
 
   &__step {
     display: block;
-    margin: rem(32) 0 rem(16);
+    margin: remFromPx(32) 0 remFromPx(16);
     color: $color-supernova;
     font-weight: bold;
   }
@@ -19,6 +19,6 @@
   }
 
   @include mobile {
-    padding: rem(60) rem(17);
+    padding: remFromPx(60) remFromPx(17);
   }
 }

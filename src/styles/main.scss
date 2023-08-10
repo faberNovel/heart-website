@@ -4,7 +4,6 @@
 @import "globals/icon";
 @import "globals/layout";
 @import "globals/vendor";
-
 @import "components/footer";
 @import "components/card";
 @import "components/catchphrase";
@@ -25,7 +24,8 @@ html {
   scroll-behavior: smooth;
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: 100% rem(1210);
+  background-size: 100% remFromPx(1210);
+
   @include background-responsive(
     "../assets/images/background-purple",
     "jpg",
@@ -33,10 +33,10 @@ html {
   );
 
   @include from($tablet) {
-    background-size: 100% rem(765);
+    background-size: 100% remFromPx(765);
   }
 
-  @include tablet-only() {
+  @include tablet-only {
     font-size: 90%;
   }
 }

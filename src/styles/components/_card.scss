@@ -1,11 +1,11 @@
 .card {
-  padding: rem(30);
+  padding: remFromPx(30);
   background: $white;
-  border-radius: rem(10);
-  box-shadow: 0 rem(2) rem(4) 0 rgba($grey-lighter, 0.5);
+  border-radius: remFromPx(10);
+  box-shadow: 0 remFromPx(2) remFromPx(4) 0 rgba($grey-lighter, 0.5);
 
   @include from($tablet) {
-    padding: rem(40) rem(75);
+    padding: remFromPx(40) remFromPx(75);
   }
 
   .columns {
@@ -17,6 +17,6 @@
   }
 
   .title {
-    margin-bottom: rem(35);
+    margin-bottom: remFromPx(35);
   }
 }

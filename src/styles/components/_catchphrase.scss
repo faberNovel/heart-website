@@ -1,17 +1,17 @@
 .catchphrase {
-  margin-bottom: rem(25);
+  margin-bottom: remFromPx(25);
   color: $color-astronaut;
-  font-size: rem(26);
+  font-size: remFromPx(26);
   text-align: center;
 
   @include from($tablet) {
-    margin: rem(32) 0 rem(15) 0;
+    margin: remFromPx(32) 0 remFromPx(15) 0;
   }
 
   @include mobile {
     br {
       display: block;
-      margin-bottom: rem(20);
+      margin-bottom: remFromPx(20);
       content: "";
     }
   }
