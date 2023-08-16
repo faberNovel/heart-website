@@ -18,7 +18,7 @@
     "Fatoumata Valbert-Geraud"
   ],
   "scripts": {
-    "build": "rimraf dist && run-s build:svg && parcel build src/index.pug --log-level info",
+    "build": "rimraf dist && run-s build:svg && parcel build src/index.pug",
     "build:svg": "svg-sprite --config sprite-config.json src/assets/icons/sprite/*.svg",
     "lint": "pug-lint src/ && stylelint src/**/*.scss",
     "start": "run-s build:svg && parcel src/index.pug"
