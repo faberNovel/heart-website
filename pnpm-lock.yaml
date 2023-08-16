@@ -9,6 +9,7 @@ specifiers:
   bulma: ^0.9.4
   npm-run-all: ^4.1.5
   parcel: ^2.9.3
+  parcel-namer-custom: ^0.2.0
   parcel-reporter-static-files-copy: ^1.5.2
   pug: ^3.0.2
   pug-lint: ^2.7.0
@@ -31,6 +32,7 @@ devDependencies:
   bulma: 0.9.4
   npm-run-all: 4.1.5
   parcel: 2.9.3
+  parcel-namer-custom: 0.2.0
   parcel-reporter-static-files-copy: 1.5.2
   pug: 3.0.2
   pug-lint: 2.7.0
@@ -4568,11 +4570,20 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /parcel-namer-custom/0.2.0:
+    resolution: {integrity: sha512-TgIKjkrNB/IeZqEdOKmqswJrZrAdpXXMU70j7ZOXmN7C5gDehZ2ooONROnuNTWGajNrCJ5NjUW6d4se7uPbodg==}
+    engines: {node: '>=10', parcel: ^2.0.0-nightly.1 || ^2.0.0-beta.1}
+    dependencies:
+      '@parcel/plugin': 2.9.3
+    dev: true
+
   /parcel-reporter-static-files-copy/1.5.2:
     resolution: {integrity: sha512-NyIP8dOBj4WiZYAfKKTFWrMh8/kjrP72673G3hs7TOoT/30QWwUQpRA7oW4IxbjY2ICOo2sV06Z1lzPKCDbrGA==}
     engines: {parcel: ^2.0.0-beta.1}
     dependencies:
       '@parcel/plugin': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /parcel/2.9.3:
