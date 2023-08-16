@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@parcel/config-default': ^2.9.3
   '@parcel/packager-raw-url': 2.9.3
   '@parcel/transformer-pug': 2.9.3
   '@parcel/transformer-sass': 2.9.3
@@ -22,6 +23,7 @@ specifiers:
   typescript: ^5.1.6
 
 devDependencies:
+  '@parcel/config-default': 2.9.3
   '@parcel/packager-raw-url': 2.9.3
   '@parcel/transformer-pug': 2.9.3
   '@parcel/transformer-sass': 2.9.3
@@ -491,6 +493,8 @@ packages:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/cache/2.9.3:
@@ -530,6 +534,54 @@ packages:
     engines: {node: '>= 12.0.0', parcel: ^2.9.3}
     dependencies:
       '@parcel/plugin': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
+
+  /@parcel/config-default/2.9.3:
+    resolution: {integrity: sha512-tqN5tF7QnVABDZAu76co5E6N8mA9n8bxiWdK4xYyINYFIEHgX172oRTqXTnhEMjlMrdmASxvnGlbaPBaVnrCTw==}
+    peerDependencies:
+      '@parcel/core': ^2.9.3
+    dependencies:
+      '@parcel/bundler-default': 2.9.3
+      '@parcel/compressor-raw': 2.9.3
+      '@parcel/namer-default': 2.9.3
+      '@parcel/optimizer-css': 2.9.3
+      '@parcel/optimizer-htmlnano': 2.9.3
+      '@parcel/optimizer-image': 2.9.3
+      '@parcel/optimizer-svgo': 2.9.3
+      '@parcel/optimizer-swc': 2.9.3
+      '@parcel/packager-css': 2.9.3
+      '@parcel/packager-html': 2.9.3
+      '@parcel/packager-js': 2.9.3
+      '@parcel/packager-raw': 2.9.3
+      '@parcel/packager-svg': 2.9.3
+      '@parcel/reporter-dev-server': 2.9.3
+      '@parcel/resolver-default': 2.9.3
+      '@parcel/runtime-browser-hmr': 2.9.3
+      '@parcel/runtime-js': 2.9.3
+      '@parcel/runtime-react-refresh': 2.9.3
+      '@parcel/runtime-service-worker': 2.9.3
+      '@parcel/transformer-babel': 2.9.3
+      '@parcel/transformer-css': 2.9.3
+      '@parcel/transformer-html': 2.9.3
+      '@parcel/transformer-image': 2.9.3
+      '@parcel/transformer-js': 2.9.3
+      '@parcel/transformer-json': 2.9.3
+      '@parcel/transformer-postcss': 2.9.3
+      '@parcel/transformer-posthtml': 2.9.3
+      '@parcel/transformer-raw': 2.9.3
+      '@parcel/transformer-react-refresh-wrap': 2.9.3
+      '@parcel/transformer-svg': 2.9.3
+    transitivePeerDependencies:
+      - '@swc/helpers'
+      - cssnano
+      - postcss
+      - purgecss
+      - relateurl
+      - srcset
+      - terser
+      - uncss
     dev: true
 
   /@parcel/config-default/2.9.3_@parcel+core@2.9.3:
@@ -691,6 +743,8 @@ packages:
       '@parcel/diagnostic': 2.9.3
       '@parcel/plugin': 2.9.3
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/node-resolver-core/3.0.3:
@@ -732,6 +786,8 @@ packages:
       browserslist: 4.21.10
       lightningcss: 1.21.5
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/optimizer-htmlnano/2.9.3:
@@ -744,6 +800,7 @@ packages:
       posthtml: 0.16.6
       svgo: 2.8.0
     transitivePeerDependencies:
+      - '@parcel/core'
       - cssnano
       - postcss
       - purgecss
@@ -751,6 +808,18 @@ packages:
       - srcset
       - terser
       - uncss
+    dev: true
+
+  /@parcel/optimizer-image/2.9.3:
+    resolution: {integrity: sha512-530YzthE7kmecnNhPbkAK+26yQNt69pfJrgE0Ev0BZaM1Wu2+33nki7o8qvkTkikhPrurEJLGIXt1qKmbKvCbA==}
+    engines: {node: '>= 12.0.0', parcel: ^2.9.3}
+    peerDependencies:
+      '@parcel/core': ^2.9.3
+    dependencies:
+      '@parcel/diagnostic': 2.9.3
+      '@parcel/plugin': 2.9.3
+      '@parcel/utils': 2.9.3
+      '@parcel/workers': 2.9.3
     dev: true
 
   /@parcel/optimizer-image/2.9.3_@parcel+core@2.9.3:
@@ -774,6 +843,8 @@ packages:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
       svgo: 2.8.0
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/optimizer-swc/2.9.3:
@@ -787,6 +858,7 @@ packages:
       '@swc/core': 1.3.76
       nullthrows: 1.1.1
     transitivePeerDependencies:
+      - '@parcel/core'
       - '@swc/helpers'
     dev: true
 
@@ -832,6 +904,8 @@ packages:
       '@parcel/source-map': 2.1.1
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/packager-html/2.9.3:
@@ -843,6 +917,8 @@ packages:
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
       posthtml: 0.16.6
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/packager-js/2.9.3:
@@ -856,6 +932,8 @@ packages:
       '@parcel/utils': 2.9.3
       globals: 13.20.0
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/packager-raw-url/2.9.3:
@@ -873,6 +951,8 @@ packages:
     engines: {node: '>= 12.0.0', parcel: ^2.9.3}
     dependencies:
       '@parcel/plugin': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/packager-svg/2.9.3:
@@ -883,6 +963,8 @@ packages:
       '@parcel/types': 2.9.3
       '@parcel/utils': 2.9.3
       posthtml: 0.16.6
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/plugin/2.9.3:
@@ -920,6 +1002,8 @@ packages:
     dependencies:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/reporter-tracer/2.9.3:
@@ -930,6 +1014,16 @@ packages:
       '@parcel/utils': 2.9.3
       chrome-trace-event: 1.0.3
       nullthrows: 1.1.1
+    dev: true
+
+  /@parcel/resolver-default/2.9.3:
+    resolution: {integrity: sha512-8ESJk1COKvDzkmOnppNXoDamNMlYVIvrKc2RuFPmp8nKVj47R6NwMgvwxEaatyPzvkmyTpq5RvG9I3HFc+r4Cw==}
+    engines: {node: '>= 12.0.0', parcel: ^2.9.3}
+    dependencies:
+      '@parcel/node-resolver-core': 3.0.3
+      '@parcel/plugin': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/resolver-default/2.9.3_@parcel+core@2.9.3:
@@ -948,6 +1042,8 @@ packages:
     dependencies:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/runtime-js/2.9.3:
@@ -958,6 +1054,8 @@ packages:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/runtime-react-refresh/2.9.3:
@@ -968,6 +1066,8 @@ packages:
       '@parcel/utils': 2.9.3
       react-error-overlay: 6.0.9
       react-refresh: 0.9.0
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/runtime-service-worker/2.9.3:
@@ -977,6 +1077,8 @@ packages:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/source-map/2.1.1:
@@ -998,6 +1100,8 @@ packages:
       json5: 2.2.3
       nullthrows: 1.1.1
       semver: 7.5.4
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-css/2.9.3:
@@ -1011,6 +1115,8 @@ packages:
       browserslist: 4.21.10
       lightningcss: 1.21.5
       nullthrows: 1.1.1
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-html/2.9.3:
@@ -1026,6 +1132,20 @@ packages:
       posthtml-render: 3.0.0
       semver: 7.5.4
       srcset: 4.0.0
+    transitivePeerDependencies:
+      - '@parcel/core'
+    dev: true
+
+  /@parcel/transformer-image/2.9.3:
+    resolution: {integrity: sha512-7CEe35RaPadQzLIuxzTtIxnItvOoy46hcbXtOdDt6lmVa4omuOygZYRIya2lsGIP4JHvAaALMb5nt99a1uTwJg==}
+    engines: {node: '>= 12.0.0', parcel: ^2.9.3}
+    peerDependencies:
+      '@parcel/core': ^2.9.3
+    dependencies:
+      '@parcel/plugin': 2.9.3
+      '@parcel/utils': 2.9.3
+      '@parcel/workers': 2.9.3
+      nullthrows: 1.1.1
     dev: true
 
   /@parcel/transformer-image/2.9.3_@parcel+core@2.9.3:
@@ -1039,6 +1159,24 @@ packages:
       '@parcel/utils': 2.9.3
       '@parcel/workers': 2.9.3_@parcel+core@2.9.3
       nullthrows: 1.1.1
+    dev: true
+
+  /@parcel/transformer-js/2.9.3:
+    resolution: {integrity: sha512-Z2MVVg5FYcPOfxlUwxqb5l9yjTMEqE3KI3zq2MBRUme6AV07KxLmCDF23b6glzZlHWQUE8MXzYCTAkOPCcPz+Q==}
+    engines: {node: '>= 12.0.0', parcel: ^2.9.3}
+    peerDependencies:
+      '@parcel/core': ^2.9.3
+    dependencies:
+      '@parcel/diagnostic': 2.9.3
+      '@parcel/plugin': 2.9.3
+      '@parcel/source-map': 2.1.1
+      '@parcel/utils': 2.9.3
+      '@parcel/workers': 2.9.3
+      '@swc/helpers': 0.5.1
+      browserslist: 4.21.10
+      nullthrows: 1.1.1
+      regenerator-runtime: 0.13.11
+      semver: 7.5.4
     dev: true
 
   /@parcel/transformer-js/2.9.3_@parcel+core@2.9.3:
@@ -1066,6 +1204,8 @@ packages:
     dependencies:
       '@parcel/plugin': 2.9.3
       json5: 2.2.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-postcss/2.9.3:
@@ -1080,6 +1220,8 @@ packages:
       nullthrows: 1.1.1
       postcss-value-parser: 4.2.0
       semver: 7.5.4
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-posthtml/2.9.3:
@@ -1093,6 +1235,8 @@ packages:
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
       semver: 7.5.4
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-pug/2.9.3:
@@ -1110,6 +1254,8 @@ packages:
     engines: {node: '>= 12.0.0', parcel: ^2.9.3}
     dependencies:
       '@parcel/plugin': 2.9.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-react-refresh-wrap/2.9.3:
@@ -1119,6 +1265,8 @@ packages:
       '@parcel/plugin': 2.9.3
       '@parcel/utils': 2.9.3
       react-refresh: 0.9.0
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-sass/2.9.3:
@@ -1144,6 +1292,8 @@ packages:
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
       semver: 7.5.4
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-webmanifest/2.9.3:
