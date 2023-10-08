@@ -18,12 +18,12 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@v4
         with:
           analysis_service: greenit
           file: ${{ matrix.greenit_configuration }}
           listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
         continue-on-error: true
 
   lighthouse:
@@ -37,12 +37,12 @@ jobs:
         ]
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@v4
         with:
           analysis_service: lighthouse
           file: ${{ matrix.lighthouse_configuration }}
           listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
         continue-on-error: true
 
   observatory:
@@ -50,21 +50,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@v4
         with:
           analysis_service: observatory
           file: analysis/conf/observatory.json
           listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
 
   ssllabs-server:
     name: 🔬 Analyze with SSL Labs Server
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@v1
+      - uses: faberNovel/heart-action@v4
         with:
           analysis_service: ssllabs-server
           file: analysis/conf/ssllabs-server.json
           listener_services: slack
-          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
