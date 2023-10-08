@@ -22,7 +22,7 @@ jobs:
         with:
           analysis_service: greenit
           config: ${{ matrix.greenit_configuration }}
-          listener_services: slack
+          listener_services_only: slack
           slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
         continue-on-error: true
 
@@ -41,7 +41,7 @@ jobs:
         with:
           analysis_service: lighthouse
           config: ${{ matrix.lighthouse_configuration }}
-          listener_services: slack
+          listener_services_only: slack
           slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
         continue-on-error: true
 
@@ -54,7 +54,7 @@ jobs:
         with:
           analysis_service: observatory
           config: analysis/conf/observatory.json
-          listener_services: slack
+          listener_services_only: slack
           slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
 
   ssllabs-server:
@@ -66,5 +66,5 @@ jobs:
         with:
           analysis_service: ssllabs-server
           config: analysis/conf/ssllabs-server.json
-          listener_services: slack
+          listener_services_only: slack
           slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
