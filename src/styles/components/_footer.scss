@@ -52,4 +52,8 @@
   .column:first-child {
     display: inline-flex;
   }
+
+  p + p {
+    margin-top: 1em
+  }
 }
