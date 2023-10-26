@@ -4,7 +4,7 @@ mixin navigation
       { label: 'Heart', route: '#in-few-words' },
       { label: 'Functioning', route: '#how-it-works' },
       { label: 'Compatible services', route: '#compatible-services' },
-      { icon: 'github', route: 'https://github.com/faberNovel/heart', blank: true }
+      { icon: 'github', route: 'https://github.com/faberNovel/heart', blank: true, title: "Browse the GitHub repository" }
     ]
 
   nav.header__navigation(aria-label="navigation")&attributes(attributes)
@@ -15,6 +15,7 @@ mixin navigation
           if item.blank
             - linkHeaderAttributes.target = "_blank"
             - linkHeaderAttributes.rel = "noreferrer"
+            - linkHeaderAttributes.title = item.title
           a.header__navigationLink(href=item.route)&attributes(linkHeaderAttributes)
             if item.icon
               +svg(item.icon)

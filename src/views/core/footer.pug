@@ -37,4 +37,8 @@ footer.footer
                       - linkFooterAttributes.hreflang = link.hreflang
                     a.footer__link(href=link.href)&attributes(linkFooterAttributes)= link.label
         .column
-          p Made with love in Paris
+          .is-flex.is-flex-direction-column.is-justify-content-space-between
+            p Made with love in Paris
+            p
+              a(href="https://bff.ecoindex.fr/redirect/?url=https://heart.fabernovel.com/")(target="_blank")(hreflang="fr")
+                img(src="https://bff.ecoindex.fr/badge/?theme=light&url=https://heart.fabernovel.com/")(alt="Ecoindex Badge")
