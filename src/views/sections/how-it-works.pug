@@ -14,14 +14,14 @@ section#how-it-works.section
         4: 'The analysis results are transmit to third party services to be processed'
       }
       const analysisModules = [
-        'google-lighthouse',
-        'greenit',
-        'qualys-ssl-labs',
-        'mozilla-observatory'
+        { id: 'google-lighthouse', width: 52, height: 52 },
+        { id: 'greenit', width: 52, height: 51 },
+        { id: 'qualys-ssl-labs', width: 38, height: 46 },
+        { id: 'mozilla-observatory', width: 61, height: 18 },
       ]
       const listenerModules = [
-        'mysql',
-        'slack'
+        { id: 'mysql', width: 52, height: 26 },
+        { id: 'slack', width: 44, height: 44 },
       ]
 
     //- Desktop
@@ -44,7 +44,7 @@ section#how-it-works.section
           .schema__listeners
             each listenerModule in listenerModules
               .schema__square
-                +svg('icon-' + listenerModule, true, 'services/')
+                +svg('icon-' + listenerModule.id, true, 'services/')(width=listenerModule.width height=listenerModule.height)
 
         //- Heart
         .schema__column
@@ -67,7 +67,7 @@ section#how-it-works.section
         .schema__column
           each analysisModule in analysisModules
             .schema__square
-              +svg('icon-' + analysisModule, true, 'services/')
+              +svg('icon-' + analysisModule.id, true, 'services/')(width=analysisModule.width height=analysisModule.height)
     //- Mobile
     .schema.is-hidden-desktop
       .schema__columns
@@ -79,7 +79,7 @@ section#how-it-works.section
         .schema__column.-isStep.-isStep1
           .schema__arrow
             .schema__arrowNumber 1
-            +svg('arrow-vertical-1', true, 'arrows/')
+            +svg('arrow-vertical-1', true, 'arrows/')(width="42" height="249")
           p.schema__info= steps[1]
 
         //- Heart
@@ -92,7 +92,7 @@ section#how-it-works.section
         .schema__column.-isStep.-isStep2
           .schema__arrow
             .schema__arrowNumber 2
-            +svg('arrow-vertical-2-3', true, 'arrows/')
+            +svg('arrow-vertical-2-3', true, 'arrows/')(width="42" height="253")
           p.schema__info= steps[2]
 
         //- Analysis modules
@@ -100,17 +100,17 @@ section#how-it-works.section
           .schema__analysisContainer
             each analysisModule in analysisModules.slice(0, 2)
               .schema__square
-                +svg('icon-' + analysisModule, true, 'services/')
+                +svg('icon-' + analysisModule.id, true, 'services/')(width=analysisModule.width height=analysisModule.height)
           .schema__analysisContainer
             each analysisModule in analysisModules.slice(2)
               .schema__square
-                +svg('icon-' + analysisModule, true, 'services/')
+                +svg('icon-' + analysisModule.id, true, 'services/')(width=analysisModule.width height=analysisModule.height)
 
         //- Step 3
         .schema__column.-isStep.-isStep3
           .schema__arrow
             .schema__arrowNumber 3
-            +svg('arrow-vertical-2-3', true, 'arrows/')
+            +svg('arrow-vertical-2-3', true, 'arrows/')(width="42" height="253")
           p.schema__info= steps[3]
 
         //- Heart
@@ -123,12 +123,12 @@ section#how-it-works.section
         .schema__column.-isStep.-isStep4
           .schema__arrow
             .schema__arrowNumber 4
-            +svg('arrow-vertical-4', true, 'arrows/')
+            +svg('arrow-vertical-4', true, 'arrows/')(width="42" height="358")
           p.schema__info= steps[4]
           .schema__listeners
             each listenerModule in listenerModules
               .schema__square
-                +svg('icon-' + listenerModule, true, 'services/')
+                +svg('icon-' + listenerModule.id, true, 'services/')(width=listenerModule.width height=listenerModule.height)
 
         //- User
         .schema__column
