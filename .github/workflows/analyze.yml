@@ -18,6 +18,7 @@ jobs:
         ]
 
     steps:
+      - uses: actions/checkout@v4
       - uses: faberNovel/heart-action@v4
         with:
           analysis_service: greenit
@@ -37,6 +38,7 @@ jobs:
         ]
 
     steps:
+      - uses: actions/checkout@v4
       - uses: faberNovel/heart-action@v4
         with:
           analysis_service: lighthouse
@@ -50,7 +52,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: faberNovel/heart-action@v4
+      - uses: actions/checkout@v4
+      - uses: faberNovel/heart-action@fix/npm-executable-not-found
         with:
           analysis_service: observatory
           config: analysis/conf/observatory.json
@@ -62,6 +65,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - uses: faberNovel/heart-action@v4
         with:
           analysis_service: ssllabs-server
